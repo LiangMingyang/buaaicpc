@@ -1,8 +1,6 @@
 INIT_RATING = 1000
 INIT_VOL = 400
 qnorm = (p) ->
-# ALGORITHM AS 111, APPL.STATIST., VOL.26, 118-121, 1977.
-# Computes z=invNorm(p)
   p = parseFloat(p)
   split = 0.42
   a0 = 2.50662823884
@@ -37,7 +35,6 @@ qnorm = (p) ->
   ppnd
 
 erf = (x) ->
-# constants
   a1 = 0.254829592
   a2 = -0.284496736
   a3 = 1.421413741
@@ -132,8 +129,8 @@ update = (ARank, form, n)->
   newVol = Math.sqrt( (newRating-oldRating)*(newRating-oldRating)/weight+oldVol*oldVol/(weight+1) )
 
   return {
-  newRating : newRating
-  newVol : newVol
+    newRating : newRating
+    newVol : newVol
   }
 
 
