@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  script(src='/javascripts/rating/bowser.js')
+  .container
+    .row
+      .col-md-2
+      .col-md-1
+      .col-md-2
+        p#contest Contest 1
+      .col-md-1
+      .col-md-2
+        p Rating
+    .row
+      .col-md-2
+      .col-md-1
+        ul.rank
+          - for(var i = 0 ; i < teamName.length ; ++i)
+            li #{i}
+      .col-md-2
+        ul.list
+          - for(var i = 0 ; i < teamName.length ; ++i)
+            li #{teamName[i]}
+        button.btn.btn-default(onclick="solve();") solve
+      .col-md-1
+      .col-md-2
+        ul.team
+          - for(var i = 0 ; i < teamName.length ; ++i)
+            li #{teamName[i]}
+      .col-md-2
+        ul.rating
+          - for(var i = 0 ; i < teamName.length ; ++i)
+            li #{1000}
+    .row
+
+  script.
+    $('.list').sortable()

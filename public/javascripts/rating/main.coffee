@@ -122,7 +122,7 @@ update = (ARank, form, n)->
     k = 1 if newRating > oldRating
     newRating = oldRating+k*CAP
 
-  if ARank is 1 and newRating <= oldRating
+  if ARank is 1 and parseInt(newRating) <= parseInt(oldRating)
     newRating = oldRating+1
 
   oldVol = form[ARank-1].vol
@@ -144,6 +144,7 @@ calc = (results, num = 50)->
     for id in contest
       if id >= num
         console.log "There is an invalid id in contest[#{j}]. "
+        alert "There is an invalid id in contest[#{j}]. "
         return []
       form.push(
         rating : rating[id]
@@ -159,13 +160,13 @@ calc = (results, num = 50)->
       vol[ele.id] = res.newVol
   return rating
 
-build = (contests, teamName)->
+@build = (contests, teamName)->
   rating =  calc(contests, teamName.length)
   res = []
   for r,i in rating
     ele = {
       rating : r
-      teamname : teamName[i]
+      teamName : teamName[i]
     }
     res.push(ele)
   res.sort(
@@ -175,5 +176,3 @@ build = (contests, teamName)->
       return -1
   )
   return res
-
-module.exports = build
