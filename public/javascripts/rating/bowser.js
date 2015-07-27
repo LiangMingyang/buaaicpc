@@ -2,7 +2,7 @@
 (function() {
   this.solve = function() {
     var array, dic, ele, form, i, j, k, l, len, len1, ref, res, res_rating, res_team, t, team, teams;
-    teams = ["TheWaySoFar", "Damocles", "undetermined", "TDL", "LovelyDonuts", "NewBeer", "TheThreeMusketeers", "I-PPPei+", "Prometheus", "Nostalgia", "Time After Time", "TriMusketeers", "null", "Unknown"];
+    teams = ["TheWaySoFar", "Damocles", "undetermined", "TDL", "LovelyDonuts", "NewBeer", "TheThreeMusketeers", "I-PPPei+", "Prometheus", "Nostalgia", "Time After Time", "TriMusketeers", "null", "拖拽我"];
     dic = {};
     for (i = j = 0, len = teams.length; j < len; i = ++j) {
       team = teams[i];
