@@ -25,6 +25,7 @@
     if i > teams.length
       break
     form.push dic[t] if dic[t] isnt undefined
+  console.log form
   @table ?= []
   @contest_num ?= 1
   table.push form

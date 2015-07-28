@@ -28,6 +28,7 @@
         form.push(dic[t]);
       }
     }
+    console.log(form);
     if (this.table == null) {
       this.table = [];
     }
