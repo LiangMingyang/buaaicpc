@@ -125,6 +125,9 @@ update = (ARank, form, n)->
   if ARank is 1 and parseInt(newRating) <= parseInt(oldRating)
     newRating = oldRating+1
 
+  if newRating < 0
+    newRating=0
+
   oldVol = form[ARank-1].vol
   newVol = Math.sqrt( (newRating-oldRating)*(newRating-oldRating)/weight+oldVol*oldVol/(weight+1) )
 

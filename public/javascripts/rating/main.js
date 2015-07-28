@@ -143,6 +143,9 @@
     if (ARank === 1 && parseInt(newRating) <= parseInt(oldRating)) {
       newRating = oldRating + 1;
     }
+    if (newRating < 0) {
+      newRating = 0;
+    }
     oldVol = form[ARank - 1].vol;
     newVol = Math.sqrt((newRating - oldRating) * (newRating - oldRating) / weight + oldVol * oldVol / (weight + 1));
     return {
