@@ -23,7 +23,7 @@ teamName = [
 ];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/rating/test', function(req, res, next) {
   res.render('index', { title: '北航ACM集训队Rating计算', teamName: teamName });
 });
 
