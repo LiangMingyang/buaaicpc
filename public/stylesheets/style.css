@@ -9,7 +9,7 @@ a {
 .list li {
   text-align: center;
   border: 1px solid #CCC;
-  margin: 10px;
+  margin: 5px;
   font-family: arial;
   height: 40px;
   width: 150px;
@@ -24,7 +24,7 @@ a {
 .rank li {
   text-align: center;
   border: 1px solid #CCC;
-  margin: 10px;
+  margin: 5px;
   font-family: arial;
   height: 40px;
   width: 20px;
@@ -43,7 +43,7 @@ ul {
 .team li {
   text-align: center;
   border: 1px solid #CCC;
-  margin: 10px;
+  margin: 5px;
   font-family: arial;
   height: 40px;
   width: 150px;
@@ -58,7 +58,7 @@ ul {
 .rating li {
   text-align: center;
   border: 1px solid #CCC;
-  margin: 10px;
+  margin: 5px;
   font-family: arial;
   height: 40px;
   width: 80px;

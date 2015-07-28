@@ -19,9 +19,14 @@
       return results;
     })();
     form = [];
-    for (k = 0, len1 = array.length; k < len1; k++) {
-      t = array[k];
-      form.push(dic[t]);
+    for (i = k = 0, len1 = array.length; k < len1; i = ++k) {
+      t = array[i];
+      if (i > teams.length) {
+        break;
+      }
+      if (dic[t] !== void 0) {
+        form.push(dic[t]);
+      }
     }
     if (this.table == null) {
       this.table = [];

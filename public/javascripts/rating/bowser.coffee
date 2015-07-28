@@ -21,8 +21,10 @@
   array = $('.list>li')
   array = (ele.innerText for ele in array)
   form = []
-  for t in array
-    form.push dic[t]
+  for t,i in array
+    if i > teams.length
+      break
+    form.push dic[t] if dic[t] isnt undefined
   @table ?= []
   @contest_num ?= 1
   table.push form
