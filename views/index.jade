@@ -7,15 +7,15 @@ block content
       .col-md-2
       .col-md-1
       .col-md-2
-        p#contest Contest 1
+        p#contest Contest #1
       .col-md-1
       .col-md-2
-        p Rating
+        p#rating Rating #0
     .row
       .col-md-2
       .col-md-1
         ul.rank
-          - for(var i = 0 ; i < teamName.length ; ++i)
+          - for(var i = 1 ; i <= teamName.length ; ++i)
             li #{i}
       .col-md-2
         ul.list
@@ -32,7 +32,7 @@ block content
         ul.rating
           - for(var i = 0 ; i < teamName.length ; ++i)
             li #{1000}
-        button.btn.btn-default 查看当前积分
+        button.btn.btn-default(onclick="showNow();") 重置为当前积分
     .row
 
   script.
