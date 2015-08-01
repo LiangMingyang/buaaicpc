@@ -98,8 +98,9 @@
     return 150 + 1500 / (n + 1);
   };
 
-  update = function(ARank, form, n) {
-    var Aperf, CAP, CF, Eperf, Erank, PerfAs, aveRating, ele, k, l, len, len1, len2, m, newRating, newVol, o, oldRating, oldVol, sum1, sum2, sum_rating, weight;
+  update = function(order, form, n) {
+    var ARank, Aperf, CAP, CF, Eperf, Erank, PerfAs, aveRating, ele, k, l, len, len1, len2, m, newRating, newVol, o, oldRating, oldVol, sum1, sum2, sum_rating, weight;
+    ARank = form[order].rank;
     if (ARank <= 0 || ARank > form.length) {
       return -1;
     }
@@ -125,13 +126,13 @@
     }
     CF += sum2 / (form.length - 1);
     CF = Math.sqrt(CF);
-    Erank = calcERank(form[ARank - 1], form);
+    Erank = calcERank(form[order], form);
     Eperf = calcEperf(Erank, form);
     Aperf = calcAperf(ARank, form);
-    PerfAs = calcPerAs(form[ARank - 1].rating, Aperf, Eperf, CF);
+    PerfAs = calcPerAs(form[order].rating, Aperf, Eperf, CF);
     weight = calcWeight(n);
     CAP = calcCap(n);
-    oldRating = form[ARank - 1].rating;
+    oldRating = form[order].rating;
     newRating = (oldRating + weight * PerfAs) / (1 + weight);
     if (Math.abs(newRating - oldRating) > CAP) {
       k = -1;
@@ -155,7 +156,7 @@
   };
 
   calc = function(results, num) {
-    var ARank, cnt, contest, ele, form, i, id, j, l, len, m, o, rating, ref, ref1, res, vol;
+    var cnt, ele, form, i, id, j, l, len, m, o, rank, ranks, rating, ref, ref1, res, vol;
     if (num == null) {
       num = 50;
     }
@@ -184,25 +185,29 @@
       return results1;
     })();
     for (j = l = 0, ref = results.length; 0 <= ref ? l < ref : l > ref; j = 0 <= ref ? ++l : --l) {
-      contest = results[j];
+      ranks = results[j];
+      console.log(ranks);
       form = [];
-      for (m = 0, len = contest.length; m < len; m++) {
-        id = contest[m];
+      for (id = m = 0, len = ranks.length; m < len; id = ++m) {
+        rank = ranks[id];
         if (id >= num) {
           console.log("There is an invalid id in contest[" + j + "]. ");
           alert("There is an invalid id in contest[" + j + "]. ");
           return [];
         }
+        if (rank === -1) {
+          continue;
+        }
         form.push({
           rating: rating[id],
           vol: vol[id],
-          id: id
+          id: id,
+          rank: rank
         });
       }
       for (i = o = 0, ref1 = form.length; 0 <= ref1 ? o < ref1 : o > ref1; i = 0 <= ref1 ? ++o : --o) {
         ++cnt[form[i].id];
-        ARank = i + 1;
-        res = update(ARank, form, cnt[form[i].id]);
+        res = update(i, form, cnt[form[i].id]);
         ele = form[i];
         rating[ele.id] = res.newRating;
         vol[ele.id] = res.newVol;
@@ -211,9 +216,9 @@
     return rating;
   };
 
-  this.build = function(contests, teamName) {
+  this.build = function(ranks, teamName) {
     var ele, i, l, len, r, rating, res;
-    rating = calc(contests, teamName.length);
+    rating = calc(ranks, teamName.length);
     res = [];
     for (i = l = 0, len = rating.length; l < len; i = ++l) {
       r = rating[i];
@@ -231,6 +236,8 @@
     });
     return res;
   };
+
+  module.exports = this.build;
 
 }).call(this);
 

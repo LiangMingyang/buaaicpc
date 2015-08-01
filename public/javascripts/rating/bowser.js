@@ -3,7 +3,7 @@
   this.teams = ["TheWaySoFar", "Damocles", "undetermined", "TDL", "LovelyDonuts", "NewBeer", "TheThreeMusketeers", "I-PPPei+", "Prometheus", "Nostalgia", "Time After Time", "TriMusketeers", "null", "拖拽我"];
 
   this.solve = function() {
-    var array, dic, ele, form, i, j, k, l, len, len1, ref, ref1, res, res_rating, res_team, t, team;
+    var array, dic, ele, form, i, j, k, l, len, len1, ranks, ref, ref1, res, res_rating, res_team, t, team;
     dic = {};
     ref = this.teams;
     for (i = j = 0, len = ref.length; j < len; i = ++j) {
@@ -30,6 +30,7 @@
         form.push(dic[t]);
       }
     }
+    ranks = [];
     console.log(form);
     if (this.table == null) {
       this.table = [];
@@ -52,7 +53,7 @@
 
   this.showNow = function() {
     var i, j, ref, res, res_rating, res_team;
-    this.table = [[0, 2, 1, 4, 3, 5, 6, 12, 8, 11, 7, 9, 10, 13], [0, 5, 7, 6, 3, 1, 2, 8, 12, 9, 4, 11, 10, 13]];
+    this.table = [[1, 3, 2, 5, 4, 6, 7, 11, 9, 12, 13, 10, 8, 14], [1, 6, 7, 5, 11, 2, 4, 3, 8, 10, 13, 12, 9, 14]];
     this.contest_num = table.length + 1;
     res = this.build(table, this.teams);
     res_team = $('.team>li');
