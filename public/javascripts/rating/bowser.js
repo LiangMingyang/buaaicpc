@@ -52,7 +52,7 @@
 
   this.showNow = function() {
     var i, j, ref, res, res_rating, res_team;
-    this.table = [[0, 2, 1, 4, 3, 5, 6, 12, 8, 11, 7, 9, 10, 13], [0, 5, 7, 6, 3, 1, 2, 8, 12, 9, 4, 11, 10, 13]];
+    this.table = [[0, 2, 1, 4, 3, 5, 6, 12, 8, 11, 7, 9, 10, 13], [0, 5, 7, 6, 3, 1, 2, 8, 12, 9, 4, 11, 10, 13], [0, 2, 1, 3, 4, 12, 8, 6, 9, 10, 5, 7, 11, 13]];
     this.contest_num = table.length + 1;
     res = this.build(table, this.teams);
     res_team = $('.team>li');
