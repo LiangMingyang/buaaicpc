@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 teamName = [
-  "TheWaySoFar"
+    "TheWaySoFar"
   , "Damocles"
   , "undetermined"
   , "TDL"
@@ -15,11 +15,6 @@ teamName = [
   , "Time After Time"
   , "TriMusketeers"
   , "null"
-  , "拖拽我"
-  , "未参加"
-  , "未参加"
-  , "未参加"
-  , "未参加"
 ];
 
 /* GET home page. */
