@@ -3,7 +3,7 @@
   this.teams = ["TheWaySoFar", "Damocles", "undetermined", "TDL", "LovelyDonuts", "NewBeer", "TheThreeMusketeers", "I-PPPei+", "Prometheus", "Nostalgia", "Time After Time", "TriMusketeers", "null", "拖拽我"];
 
   this.solve = function() {
-    var array, dic, ele, form, i, j, k, l, len, len1, ranks, ref, ref1, res, res_rating, res_team, t, team;
+    var array, dic, ele, i, j, k, l, len, rank, ref, ref1, ref2, res, res_rating, res_team, table, team;
     dic = {};
     ref = this.teams;
     for (i = j = 0, len = ref.length; j < len; i = ++j) {
@@ -20,29 +20,41 @@
       }
       return results;
     })();
-    form = [];
-    for (i = k = 0, len1 = array.length; k < len1; i = ++k) {
-      t = array[i];
-      if (i > this.teams.length) {
-        break;
+    rank = $('.rank>li');
+    rank = (function() {
+      var k, len1, results;
+      results = [];
+      for (k = 0, len1 = rank.length; k < len1; k++) {
+        ele = rank[k];
+        results.push(parseInt(ele.innerText));
       }
-      if (dic[t] !== void 0) {
-        form.push(dic[t]);
+      return results;
+    })();
+    table = (function() {
+      var k, ref1, results;
+      results = [];
+      for (i = k = 0, ref1 = this.teams.length; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+        results.push(0);
+      }
+      return results;
+    }).call(this);
+    for (i = k = 0, ref1 = array.length; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+      if (dic[array[i]] !== void 0) {
+        table[dic[array[i]]] = rank[i];
       }
     }
-    ranks = [];
-    console.log(form);
+    console.log(table);
     if (this.table == null) {
       this.table = [];
     }
     if (this.contest_num == null) {
       this.contest_num = 1;
     }
-    table.push(form);
-    res = this.build(table, this.teams);
+    this.table.push(table);
+    res = this.build(this.table, this.teams);
     res_team = $('.team>li');
     res_rating = $('.rating>li');
-    for (i = l = 0, ref1 = this.teams.length; 0 <= ref1 ? l < ref1 : l > ref1; i = 0 <= ref1 ? ++l : --l) {
+    for (i = l = 0, ref2 = this.teams.length; 0 <= ref2 ? l < ref2 : l > ref2; i = 0 <= ref2 ? ++l : --l) {
       res_team[i].innerHTML = res[i].teamName;
       res_rating[i].innerHTML = parseInt(res[i].rating);
     }
@@ -53,7 +65,7 @@
 
   this.showNow = function() {
     var i, j, ref, res, res_rating, res_team;
-    this.table = [[1, 3, 2, 5, 4, 6, 7, 11, 9, 12, 13, 10, 8, 14], [1, 6, 7, 5, 11, 2, 4, 3, 8, 10, 13, 12, 9, 14]];
+    this.table = [[1, 3, 2, 5, 4, 6, 7, 11, 9, 12, 13, 10, 8, 14], [1, 6, 7, 5, 11, 2, 4, 3, 8, 10, 13, 12, 9, 14], [1, 3, 2, 4, 5, 11, 8, 12, 7, 9, 10, 13, 6, 14]];
     this.contest_num = table.length + 1;
     res = this.build(table, this.teams);
     res_team = $('.team>li');

@@ -325,7 +325,7 @@ calc = (results, num = 50)->
   cnt = (0 for i in [0...num]) #积分积了几次
   for j in [0...results.length]
     ranks = results[j]
-    console.log ranks
+    #console.log ranks
     form = []
     for rank,id in ranks
       if id >= num
@@ -365,4 +365,4 @@ calc = (results, num = 50)->
   )
   return res
 
-module.exports = @build
+#module.exports = @build

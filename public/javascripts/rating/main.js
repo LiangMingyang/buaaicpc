@@ -186,7 +186,6 @@
     })();
     for (j = l = 0, ref = results.length; 0 <= ref ? l < ref : l > ref; j = 0 <= ref ? ++l : --l) {
       ranks = results[j];
-      console.log(ranks);
       form = [];
       for (id = m = 0, len = ranks.length; m < len; id = ++m) {
         rank = ranks[id];
@@ -236,8 +235,6 @@
     });
     return res;
   };
-
-  module.exports = this.build;
 
 }).call(this);
 
