@@ -1,4 +1,5 @@
-@drawRating = (data)->
+@drawRating = ()->
+  @series ?= []
   $("#panel").highcharts
     title:
       text: "Rating变化图"
@@ -30,5 +31,5 @@
       verticalAlign: "middle"
       borderWidth: 0
 
-    series: data
+    series: @series
 

@@ -28,7 +28,7 @@ block content
         ul.team
           - for(var i = 0 ; i < teamName.length ; ++i)
             li #{teamName[i]}
-        button.btn.btn-default(onclick="drawRating(series);") 统计图表
+        button.btn.btn-default(onclick="drawRating();") 画出统计图表
       .col-md-2
         ul.rating
           - for(var i = 0 ; i < teamName.length ; ++i)
