@@ -346,9 +346,16 @@ calc = (results, num = 50)->
       ele = form[i]
       rating[ele.id] = res.newRating
       vol[ele.id] = res.newVol
+      @series[ele.id].data.push res.newRating
   return rating
 
 @build = (ranks, teamName)->
+  @series = []
+  for ele in teamName
+    @series.push(
+      name:ele
+      data:[]
+    )
   rating =  calc(ranks, teamName.length)
   res = []
   for r,i in rating

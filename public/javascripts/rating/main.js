@@ -210,16 +210,25 @@
         ele = form[i];
         rating[ele.id] = res.newRating;
         vol[ele.id] = res.newVol;
+        this.series[ele.id].data.push(res.newRating);
       }
     }
     return rating;
   };
 
   this.build = function(ranks, teamName) {
-    var ele, i, l, len, r, rating, res;
+    var ele, i, l, len, len1, m, r, rating, res;
+    this.series = [];
+    for (l = 0, len = teamName.length; l < len; l++) {
+      ele = teamName[l];
+      this.series.push({
+        name: ele,
+        data: []
+      });
+    }
     rating = calc(ranks, teamName.length);
     res = [];
-    for (i = l = 0, len = rating.length; l < len; i = ++l) {
+    for (i = m = 0, len1 = rating.length; m < len1; i = ++m) {
       r = rating[i];
       ele = {
         rating: r,
