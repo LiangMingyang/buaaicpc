@@ -18,9 +18,9 @@
 
   Name = ["TheWaySoFar", "Damocles", "undetermined", "TDL", "LovelyDonuts", "NewBeer", "TheThreeMusketeers", "I-PPPei+", "Prometheus", "null"];
 
-  Team = ["team0235@pkuicpc.cn", "team0236@pkuicpc.cn", "team0237@pkuicpc.cn", "team0238@pkuicpc.cn", "team0239@pkuicpc.cn", "team0240@pkuicpc.cn", "team0241@pkuicpc.cn", "team0242@pkuicpc.cn", "team0243@pkuicpc.cn", "team0244@pkuicpc.cn", "team0245@pkuicpc.cn", "team0246@pkuicpc.cn", "team0247@pkuicpc.cn"];
+  Team = [];
 
-  Pass = ["5200262paw", "qghwpb1fwo", "eu0vs9zp3g", "r9i790drpn", "3wjks8v93s", "xi2xdamszq", "96f7d4oqvt", "tzpczh0v64", "33mlgzv38v", "9hhoovsc13", "6bibni94tf", "8cjuxz9six", "3relvjw3bd"];
+  Pass = [];
 
   record = 0;
 
