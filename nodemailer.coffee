@@ -43,20 +43,28 @@ Team = [
 Pass = [
 ]
 record = 0
+
+mailOptions = []
+send = (i)->
+  setTimeout(->
+    smtpTransport.sendMail mailOptions[i], (err, res)->
+      if(err)
+        console.log err, res
+      else
+        console.log res
+      ++record
+  , i*1000)
 for i in [0...Name.length]
-  mailOptions = {
+  mailOptions.push {
     from: "梁明阳<1012004860@qq.com>" # 发件地址
     to: "#{Name[i]}<#{To[i]}>" #收件列表
-    subject: "ACM-ICPC:北京网络赛账号和密码" #标题
-    html: "Hi，#{Name[i]}，这是你们队的账号和密码<br><br><b>账号：#{Team[i]}</b><br><b>密码：#{Pass[i]}</b><br><br>北京网络赛将于2015-09-20 12:00:00在<a href=\"http://acm.pku.edu.cn/icpc_pku2015/\">Hihocoder</a>上进行，大家可以提前适应一下hihocoder的比赛环境。<br><br>不要作弊，会有监察的。<br>注意保管账号和密码，<b>预祝你们取得好成绩，收到请回复</b><br><br>------------------<br>发送自：梁明阳<br>手机：13146014364<br>邮箱：1012004860@qq.com<br>QQ：1012004860<br>" #html 内容
+    #to: "lmysoar@hotmail.com"
+    subject: "ACM-ICPC:合肥网络赛账号和密码" #标题
+    html: "Hi，#{Name[i]}，这是你们队的合肥网络赛的账号和密码<br><br><b>账号：#{Team[i]}</b><br><b>密码：#{Pass[i]}</b><br><br>合肥网络赛将于2015-09-27 12:00:00在HDU上进行。<br><br>不要作弊，会有监察的。<br>注意保管账号和密码，<b>预祝你们取得好成绩，收到请回复</b><br><br>------------------<br>发送自：梁明阳<br>手机：13146014364<br>邮箱：1012004860@qq.com<br>QQ：1012004860<br>" #html 内容
   }
   # 发送邮件
-  smtpTransport.sendMail mailOptions, (err, res)->
-    if(err)
-      console.log err, res
-    else
-      console.log res
-    ++record
+for i in [0...Name.length]
+  send(i)
 
 setInterval(->
   if record >= To.length
