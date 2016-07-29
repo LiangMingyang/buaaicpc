@@ -11,6 +11,7 @@
   angular.module('bcpc-rating', ['as.sortable']).controller('main', function($scope) {
     var fileExport, series, team, update;
     $scope.currentRanks = [];
+    $scope.PS = PS;
     series = [];
     $scope.teamNames = ["TDL", "LovelyDonuts", "ACMakeMeHappier", "null", "sto orz", "QAQ", "ResuscitatedHope", "Veleno", "deticxe", "GG", "firebug", "The South China Sea"];
     $scope.teamList = (function() {

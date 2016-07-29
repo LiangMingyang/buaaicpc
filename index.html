@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-2">
-                <p id="Problems">Problems</p>
+                <p id="Problems">+ Problems * {{PS}}</p>
             </div>
         </div>
         <div class="row">
@@ -61,7 +61,7 @@
                 <ul class="rating">
                     <li ng-repeat="team in result">{{team.rating}}</li>
                 </ul>
-                <button ng-click="showNow();" class="btn btn-default">重置为当前积分</button>
+                <button ng-click="downloadRank();" class="btn btn-default">保存</button>
             </div>
         <!--<div class="row">-->
             <!--<div class="col-md-3"></div>-->
@@ -78,13 +78,11 @@
                             <td class="team">{{team}}</td>
                             <td class="rating">
                                 <input type="number" ng-model="problemCount[$index]" ng-change="update();">
-
-                                </input>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button ng-click="downloadRank();" class="btn btn-default">SAVE</button>
+                <button ng-click="showNow();" class="btn btn-default">重置</button>
             </div>
         </div>
         <div class="row">

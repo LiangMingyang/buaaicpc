@@ -13,6 +13,8 @@ angular.module('bcpc-rating', [
 
   $scope.currentRanks = []
 
+  $scope.PS = PS
+
   series = []
 
   $scope.teamNames = [
