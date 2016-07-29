@@ -1,4 +1,6 @@
 
+PS = 2 #score of each problem
+
 global = @
 
 @series = []
@@ -32,6 +34,8 @@ angular.module('bcpc-rating', [
 
   $scope.result = ({name:team,rating:1000} for team in $scope.teamNames)
 
+  $scope.problemCount = (0 for team in $scope.teamNames)
+
   $scope.dragControlListeners=
     itemMoved: (event)->
       console.log event
@@ -50,7 +54,13 @@ angular.module('bcpc-rating', [
     $scope.currentRanks ?= []
     series = ({name:team,data:[]} for team in $scope.teamNames)
     res = global.calc($scope.currentRanks, series, $scope.teamNames.length)
-    $scope.result = ({name:team,rating:parseInt(res[i])} for team,i in $scope.teamNames)
+    $scope.result = ({name:team,rating: parseInt(res[i])} for team,i in $scope.teamNames)
+
+    for team,i in $scope.result
+      team.rating += $scope.problemCount[i]*PS
+      for rating,j in series[i].data
+        series[i].data[j] += $scope.problemCount[i]*PS
+
     $scope.result.sort(
       (a,b)->
         if a.rating < b.rating
@@ -59,7 +69,7 @@ angular.module('bcpc-rating', [
     )
     $scope.drawChart()
     return
-
+  $scope.update = update
   $scope.showNow = ()->
     $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11,12],[2,4,3,1,10,5,6,7,8,12,11,9]]
     update()
@@ -108,6 +118,8 @@ angular.module('bcpc-rating', [
       series: series
     return
 
+  $scope.drawChart()
+
   fileExport = (data, fileName, extension)->
     aLink = document.createElement("a")
     blob = new Blob([data])
@@ -119,6 +131,7 @@ angular.module('bcpc-rating', [
 
   $scope.downloadRank = ()->
     fileExport(JSON.stringify($scope.currentRanks), "rank_#{(new Date())}", "txt")
+    fileExport(JSON.stringify($scope.problemCount), "problemCount_#{(new Date())}", "txt")
 
   $scope.color = (rank)->
     return "gold" if rank <= 2

@@ -19,18 +19,22 @@
 <body ng-controller="main">
     <div class="container">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-1"></div>
+            <!--<div class="col-md-2"></div>-->
+            <!--<div class="col-md-1"></div>-->
             <div class="col-md-2">
                 <p id="contest">Contest #{{currentRanks.length+1}}</p>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-2"></div>
             <div class="col-md-2">
                 <p id="rating">Rating #{{currentRanks.length}}</p>
             </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <p id="Problems">Problems</p>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-2"></div>
+            <!--<div class="col-md-2"></div>-->
             <div class="col-md-1">
                 <ul class="rank">
                     <li ng-style="{background:color($index+1)}" ng-repeat="teamName in teamNames">{{$index+1}}</li>
@@ -57,7 +61,30 @@
                 <ul class="rating">
                     <li ng-repeat="team in result">{{team.rating}}</li>
                 </ul>
-                <button ng-click="showNow();" class="btn btn-default">重置为当前积分</button><a ng-click="downloadRank();" class="btn">当前Ranks</a>
+                <button ng-click="showNow();" class="btn btn-default">重置为当前积分</button>
+            </div>
+        <!--<div class="row">-->
+            <!--<div class="col-md-3"></div>-->
+            <div class="col-md-3">
+                <table class="table table-bordered">
+                    <!--<thead>-->
+                        <!--<tr>-->
+                        <!--<td>Team</td>-->
+                        <!--<td>Problems</td>-->
+                        <!--</tr>-->
+                    <!--</thead>-->
+                    <tbody>
+                        <tr ng-repeat="team in teamNames">
+                            <td class="team">{{team}}</td>
+                            <td class="rating">
+                                <input type="number" ng-model="problemCount[$index]" ng-change="update();">
+
+                                </input>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-click="downloadRank();" class="btn btn-default">SAVE</button>
             </div>
         </div>
         <div class="row">
@@ -66,8 +93,5 @@
             </div>
         </div>
     </div>
-    <!--<script>-->
-        <!--$('.list').sortable();-->
-    <!--</script>-->
 </body>
 </html>
