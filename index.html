@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bcpc-rating">
+<head>
+    <meta charset="UTF-8">
+    <title>BCPC Rating</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.style.min.css">-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="app.js"></script>
+    <script src="jquery.sortable.js"></script>
+    <script src="bower_components/ng-sortable/dist/ng-sortable.min.js"></script>
+    <script src="calc-rating.js"></script>
+</head>
+<body ng-controller="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <p id="contest">Contest #{{currentRanks.length+1}}</p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <p id="rating">Rating #{{currentRanks.length}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <ul class="rank">
+                    <li ng-repeat="teamName in teamNames">{{$index}}</li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <ul class="list" data-as-sortable data-ng-model="teamList">
+                    <li ng-repeat="team in teamList" data-as-sortable-item>
+                        <div data-as-sortable-item-handle>
+                            {{team}}
+                        </div>
+                    </li>
+                </ul>
+                <button ng-click="calc();" class="btn btn-default">根据排名计算积分</button>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <ul class="team">
+                    <li ng-repeat="team in result">{{team.name}}</li>
+                </ul>
+                <button ng-click="drawChart();" class="btn btn-default">画出统计图表</button>
+            </div>
+            <div class="col-md-2">
+                <ul class="rating">
+                    <li ng-repeat="team in result">{{team.rating}}</li>
+                </ul>
+                <button ng-click="showNow();" class="btn btn-default">重置为当前积分</button><a ng-click="downloadRank();" class="btn">当前Ranks</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="panel"></div>
+            </div>
+        </div>
+    </div>
+    <!--<script>-->
+        <!--$('.list').sortable();-->
+    <!--</script>-->
+</body>
+</html>

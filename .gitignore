@@ -30,5 +30,5 @@ node_modules
 
 # ide
 .idea
-
+bower_components
 
