@@ -175,8 +175,20 @@
       aLink.href = URL.createObjectURL(blob);
       return aLink.dispatchEvent(evt);
     };
-    return $scope.downloadRank = function() {
+    $scope.downloadRank = function() {
       return fileExport(JSON.stringify($scope.currentRanks), "rank_" + (new Date()), "txt");
+    };
+    return $scope.color = function(rank) {
+      if (rank <= 2) {
+        return "gold";
+      }
+      if (rank <= 5) {
+        return "silver";
+      }
+      if (rank <= 8) {
+        return "brown";
+      }
+      return "white";
     };
   });
 

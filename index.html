@@ -33,7 +33,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-1">
                 <ul class="rank">
-                    <li ng-repeat="teamName in teamNames">{{$index}}</li>
+                    <li ng-style="{background:color($index+1)}" ng-repeat="teamName in teamNames">{{$index+1}}</li>
                 </ul>
             </div>
             <div class="col-md-2">

@@ -119,3 +119,9 @@ angular.module('bcpc-rating', [
 
   $scope.downloadRank = ()->
     fileExport(JSON.stringify($scope.currentRanks), "rank_#{(new Date())}", "txt")
+
+  $scope.color = (rank)->
+    return "gold" if rank <= 2
+    return "silver" if rank <= 5
+    return "brown" if rank <=8
+    return "white"
