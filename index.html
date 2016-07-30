@@ -30,7 +30,13 @@
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-2">
-                <p id="Problems">+ Problems * {{PS}}</p>
+                <p id="Problems">+ Problems</p>
+            </div>
+            <div class="col-md-1">
+                <p id="PS">Contest*{{PS}}</p>
+            </div>
+            <div class="col-md-1">
+                <p id="PT">Training*{{PT}}</p>
             </div>
         </div>
         <div class="row">
@@ -78,6 +84,9 @@
                             <td class="team">{{team}}</td>
                             <td class="rating">
                                 <input type="number" ng-model="problemCount[$index]" ng-change="update();" title="">
+                            </td>
+                            <td class="rating">
+                                <input type="number" ng-model="trainingCount[$index]" ng-change="update();" title="">
                             </td>
                         </tr>
                     </tbody>

@@ -1,5 +1,7 @@
 
-PS = 2 #score of each problem
+PS = 5 #score of each problem
+
+PT = 2 #score of each training problem
 
 global = @
 
@@ -14,6 +16,8 @@ angular.module('bcpc-rating', [
   $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11,12],[2,4,3,1,10,5,6,7,8,12,11,9]]
 
   $scope.PS = PS
+
+  $scope.PT = PT
 
   series = []
 
@@ -38,6 +42,8 @@ angular.module('bcpc-rating', [
 
   $scope.problemCount = [13,11,14,15,9,12,13,11,12,9,8,9]
 
+  $scope.trainingCount = (0 for team in $scope.teamNames)
+
   $scope.dragControlListeners=
     itemMoved: (event)->
       console.log event
@@ -60,8 +66,10 @@ angular.module('bcpc-rating', [
 
     for team,i in $scope.result
       team.rating += $scope.problemCount[i]*PS
+      team.rating += $scope.trainingCount[i]*PT
       for rating,j in series[i].data
         series[i].data[j] += $scope.problemCount[i]*PS
+        series[i].data[j] += $scope.problemCount[i]*PT
 
     $scope.result.sort(
       (a,b)->
