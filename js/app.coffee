@@ -11,7 +11,7 @@ angular.module('bcpc-rating', [
 
 .controller 'main', ($scope)->
 
-  $scope.currentRanks = []
+  $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11,12],[2,4,3,1,10,5,6,7,8,12,11,9]]
 
   $scope.PS = PS
 
@@ -72,8 +72,8 @@ angular.module('bcpc-rating', [
     $scope.drawChart()
     return
   $scope.update = update
-  $scope.showNow = ()->
-    $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11,12],[2,4,3,1,10,5,6,7,8,12,11,9]]
+  $scope.reset = ()->
+    $scope.currentRanks = []#[[4,9,2,1,10,6,3,8,5,7,11,12],[2,4,3,1,10,5,6,7,8,12,11,9]]
     update()
 
   $scope.drawChart = ()->
@@ -140,3 +140,4 @@ angular.module('bcpc-rating', [
     return "silver" if rank <= 5
     return "brown" if rank <=8
     return "white"
+  update()

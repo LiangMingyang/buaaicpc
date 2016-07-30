@@ -10,7 +10,7 @@
 
   angular.module('bcpc-rating', ['as.sortable']).controller('main', function($scope) {
     var fileExport, series, team, update;
-    $scope.currentRanks = [];
+    $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11, 12], [2, 4, 3, 1, 10, 5, 6, 7, 8, 12, 11, 9]];
     $scope.PS = PS;
     series = [];
     $scope.teamNames = ["TDL", "LovelyDonuts", "ACMakeMeHappier", "null", "sto orz", "QAQ", "ResuscitatedHope", "Veleno", "deticxe", "GG", "firebug", "The South China Sea"];
@@ -127,8 +127,8 @@
       $scope.drawChart();
     };
     $scope.update = update;
-    $scope.showNow = function() {
-      $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11, 12], [2, 4, 3, 1, 10, 5, 6, 7, 8, 12, 11, 9]];
+    $scope.reset = function() {
+      $scope.currentRanks = [];
       return update();
     };
     $scope.drawChart = function() {
@@ -204,7 +204,7 @@
       fileExport(JSON.stringify($scope.currentRanks), "rank_" + (new Date()), "txt");
       return fileExport(JSON.stringify($scope.problemCount), "problemCount_" + (new Date()), "txt");
     };
-    return $scope.color = function(rank) {
+    $scope.color = function(rank) {
       if (rank <= 2) {
         return "gold";
       }
@@ -216,6 +216,7 @@
       }
       return "white";
     };
+    return update();
   });
 
 }).call(this);
