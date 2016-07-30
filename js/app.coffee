@@ -36,7 +36,7 @@ angular.module('bcpc-rating', [
 
   $scope.result = ({name:team,rating:1000} for team in $scope.teamNames)
 
-  $scope.problemCount = (0 for team in $scope.teamNames)
+  $scope.problemCount = [13,11,14,15,9,12,13,11,12,9,8,9]
 
   $scope.dragControlListeners=
     itemMoved: (event)->

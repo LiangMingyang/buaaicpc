@@ -37,16 +37,7 @@
       }
       return results;
     })();
-    $scope.problemCount = (function() {
-      var k, len, ref, results;
-      ref = $scope.teamNames;
-      results = [];
-      for (k = 0, len = ref.length; k < len; k++) {
-        team = ref[k];
-        results.push(0);
-      }
-      return results;
-    })();
+    $scope.problemCount = [13, 11, 14, 15, 9, 12, 13, 11, 12, 9, 8, 9];
     $scope.dragControlListeners = {
       itemMoved: function(event) {
         return console.log(event);
