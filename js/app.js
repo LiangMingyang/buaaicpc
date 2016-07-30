@@ -12,11 +12,11 @@
 
   angular.module('bcpc-rating', ['as.sortable']).controller('main', function($scope) {
     var fileExport, series, team, update;
-    $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11, 12], [2, 4, 3, 1, 10, 5, 6, 7, 8, 12, 11, 9]];
+    $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11], [2, 4, 3, 1, 10, 5, 6, 7, 8, 11, 9]];
     $scope.PS = PS;
     $scope.PT = PT;
     series = [];
-    $scope.teamNames = ["TDL", "LovelyDonuts", "ACMakeMeHappier", "null", "sto orz", "QAQ", "ResuscitatedHope", "Veleno", "deticxe", "GG", "firebug", "The South China Sea"];
+    $scope.teamNames = ["TDL", "LovelyDonuts", "ACMakeMeHappier", "null", "sto orz", "QAQ", "ResuscitatedHope", "Veleno", "deticxe", "GG", "The South China Sea"];
     $scope.teamList = (function() {
       var k, len, ref, results;
       ref = $scope.teamNames;
@@ -40,7 +40,7 @@
       }
       return results;
     })();
-    $scope.problemCount = [13, 11, 14, 15, 9, 12, 13, 11, 12, 9, 8, 9];
+    $scope.problemCount = [13, 11, 14, 15, 9, 12, 13, 11, 12, 9, 9];
     $scope.trainingCount = (function() {
       var k, len, ref, results;
       ref = $scope.teamNames;

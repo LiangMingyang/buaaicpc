@@ -13,7 +13,7 @@ angular.module('bcpc-rating', [
 
 .controller 'main', ($scope)->
 
-  $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11,12],[2,4,3,1,10,5,6,7,8,12,11,9]]
+  $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11],[2,4,3,1,10,5,6,7,8,11,9]]
 
   $scope.PS = PS
 
@@ -32,7 +32,7 @@ angular.module('bcpc-rating', [
   , "Veleno"
   , "deticxe"
   , "GG"
-  , "firebug"
+#  , "firebug"
   , "The South China Sea"
   ]
 
@@ -40,7 +40,7 @@ angular.module('bcpc-rating', [
 
   $scope.result = ({name:team,rating:1000} for team in $scope.teamNames)
 
-  $scope.problemCount = [13,11,14,15,9,12,13,11,12,9,8,9]
+  $scope.problemCount = [13,11,14,15,9,12,13,11,12,9,9]
 
   $scope.trainingCount = (0 for team in $scope.teamNames)
 
