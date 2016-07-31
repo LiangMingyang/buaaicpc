@@ -13,7 +13,7 @@ angular.module('bcpc-rating', [
 
 .controller 'main', ($scope)->
 
-  $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11],[2,4,3,1,10,5,6,7,8,11,9],[10,4,5,1,11,3,6,8,2,7,9]]
+  $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11],[2,4,3,1,10,5,6,7,8,11,9],[10,3,4,1,11,5,6,8,2,7,9]]
 
   $scope.PS = PS
 
@@ -35,6 +35,10 @@ angular.module('bcpc-rating', [
 #  , "firebug"
   , "The South China Sea"
   ]
+
+  teamDic = {}
+  for team,i in $scope.teamNames
+    teamDic[team] = i
 
   $scope.teamList = (team for team in $scope.teamNames)
 
@@ -111,13 +115,14 @@ angular.module('bcpc-rating', [
       tooltip:
         valueSuffix: ""
         pointFormatter: ()->
+          rank = $scope.currentRanks[@x][teamDic[@series.name]]
           if @x == 0
-            return "<span style='color:#{@color}'>\u25CF</span> #{@series.name}: <b>#{@y}</b><br/>"
+            return "<span style='color:#{@color}'>\u25CF</span> #{@series.name}: <b>#{@y}</b><br/><b>Rank:#{rank} </b>"
           else
             delta = @y-@series.data[@x-1].y
             sign = '+'
             sign = '' if delta < 0
-            return "<span style='color:#{@color}'>\u25CF</span> #{@series.name}: <b>#{@y}</b><br/><b>#{sign}#{delta}</b>"
+            return "<span style='color:#{@color}'>\u25CF</span> #{@series.name}: <b>#{@y}</b><br/><b>#{sign}#{delta}</b><br/><b>Rank: #{rank}</b>"
 
       legend:
         layout: "vertical"

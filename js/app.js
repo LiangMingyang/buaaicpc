@@ -11,28 +11,34 @@
   this.series = [];
 
   angular.module('bcpc-rating', ['as.sortable']).controller('main', function($scope) {
-    var fileExport, series, team, update;
-    $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11], [2, 4, 3, 1, 10, 5, 6, 7, 8, 11, 9], [10, 4, 5, 1, 11, 3, 6, 8, 2, 7, 9]];
+    var fileExport, i, k, len, ref, series, team, teamDic, update;
+    $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11], [2, 4, 3, 1, 10, 5, 6, 7, 8, 11, 9], [10, 3, 4, 1, 11, 5, 6, 8, 2, 7, 9]];
     $scope.PS = PS;
     $scope.PT = PT;
     series = [];
     $scope.teamNames = ["TDL", "LovelyDonuts", "ACMakeMeHappier", "null", "sto orz", "QAQ", "ResuscitatedHope", "Veleno", "deticxe", "GG", "The South China Sea"];
+    teamDic = {};
+    ref = $scope.teamNames;
+    for (i = k = 0, len = ref.length; k < len; i = ++k) {
+      team = ref[i];
+      teamDic[team] = i;
+    }
     $scope.teamList = (function() {
-      var k, len, ref, results;
-      ref = $scope.teamNames;
+      var l, len1, ref1, results;
+      ref1 = $scope.teamNames;
       results = [];
-      for (k = 0, len = ref.length; k < len; k++) {
-        team = ref[k];
+      for (l = 0, len1 = ref1.length; l < len1; l++) {
+        team = ref1[l];
         results.push(team);
       }
       return results;
     })();
     $scope.result = (function() {
-      var k, len, ref, results;
-      ref = $scope.teamNames;
+      var l, len1, ref1, results;
+      ref1 = $scope.teamNames;
       results = [];
-      for (k = 0, len = ref.length; k < len; k++) {
-        team = ref[k];
+      for (l = 0, len1 = ref1.length; l < len1; l++) {
+        team = ref1[l];
         results.push({
           name: team,
           rating: 1000
@@ -42,11 +48,11 @@
     })();
     $scope.problemCount = [21, 20, 23, 25, 17, 21, 22, 19, 22, 18, 17];
     $scope.trainingCount = (function() {
-      var k, len, ref, results;
-      ref = $scope.teamNames;
+      var l, len1, ref1, results;
+      ref1 = $scope.teamNames;
       results = [];
-      for (k = 0, len = ref.length; k < len; k++) {
-        team = ref[k];
+      for (l = 0, len1 = ref1.length; l < len1; l++) {
+        team = ref1[l];
         results.push(0);
       }
       return results;
@@ -60,19 +66,19 @@
       }
     };
     $scope.calc = function() {
-      var i, k, len, rank, rankDic, ref;
+      var l, len1, rank, rankDic, ref1;
       rankDic = {};
-      ref = $scope.teamList;
-      for (i = k = 0, len = ref.length; k < len; i = ++k) {
-        team = ref[i];
+      ref1 = $scope.teamList;
+      for (i = l = 0, len1 = ref1.length; l < len1; i = ++l) {
+        team = ref1[i];
         rankDic[team] = i + 1;
       }
       rank = (function() {
-        var l, len1, ref1, results;
-        ref1 = $scope.teamNames;
+        var len2, m, ref2, results;
+        ref2 = $scope.teamNames;
         results = [];
-        for (l = 0, len1 = ref1.length; l < len1; l++) {
-          team = ref1[l];
+        for (m = 0, len2 = ref2.length; m < len2; m++) {
+          team = ref2[m];
           results.push(rankDic[team]);
         }
         return results;
@@ -81,16 +87,16 @@
       return update();
     };
     update = function() {
-      var i, j, k, l, len, len1, rating, ref, ref1, res;
+      var j, l, len1, len2, m, rating, ref1, ref2, res;
       if ($scope.currentRanks == null) {
         $scope.currentRanks = [];
       }
       series = (function() {
-        var k, len, ref, results;
-        ref = $scope.teamNames;
+        var l, len1, ref1, results;
+        ref1 = $scope.teamNames;
         results = [];
-        for (k = 0, len = ref.length; k < len; k++) {
-          team = ref[k];
+        for (l = 0, len1 = ref1.length; l < len1; l++) {
+          team = ref1[l];
           results.push({
             name: team,
             data: []
@@ -100,11 +106,11 @@
       })();
       res = global.calc($scope.currentRanks, series, $scope.teamNames.length);
       $scope.result = (function() {
-        var k, len, ref, results;
-        ref = $scope.teamNames;
+        var l, len1, ref1, results;
+        ref1 = $scope.teamNames;
         results = [];
-        for (i = k = 0, len = ref.length; k < len; i = ++k) {
-          team = ref[i];
+        for (i = l = 0, len1 = ref1.length; l < len1; i = ++l) {
+          team = ref1[i];
           results.push({
             name: team,
             rating: parseInt(res[i])
@@ -112,14 +118,14 @@
         }
         return results;
       })();
-      ref = $scope.result;
-      for (i = k = 0, len = ref.length; k < len; i = ++k) {
-        team = ref[i];
+      ref1 = $scope.result;
+      for (i = l = 0, len1 = ref1.length; l < len1; i = ++l) {
+        team = ref1[i];
         team.rating += $scope.problemCount[i] * PS;
         team.rating += $scope.trainingCount[i] * PT;
-        ref1 = series[i].data;
-        for (j = l = 0, len1 = ref1.length; l < len1; j = ++l) {
-          rating = ref1[j];
+        ref2 = series[i].data;
+        for (j = m = 0, len2 = ref2.length; m < len2; j = ++m) {
+          rating = ref2[j];
           series[i].data[j] += $scope.problemCount[i] * PS;
           series[i].data[j] += $scope.problemCount[i] * PT;
         }
@@ -138,7 +144,7 @@
       return update();
     };
     $scope.drawChart = function() {
-      var k, results;
+      var l, results;
       if (global.series == null) {
         global.series = [];
       }
@@ -154,7 +160,7 @@
         xAxis: {
           categories: (function() {
             results = [];
-            for (k = 1; k <= 100; k++){ results.push(k); }
+            for (l = 1; l <= 100; l++){ results.push(l); }
             return results;
           }).apply(this)
         },
@@ -173,16 +179,17 @@
         tooltip: {
           valueSuffix: "",
           pointFormatter: function() {
-            var delta, sign;
+            var delta, rank, sign;
+            rank = $scope.currentRanks[this.x][teamDic[this.series.name]];
             if (this.x === 0) {
-              return "<span style='color:" + this.color + "'>\u25CF</span> " + this.series.name + ": <b>" + this.y + "</b><br/>";
+              return "<span style='color:" + this.color + "'>\u25CF</span> " + this.series.name + ": <b>" + this.y + "</b><br/><b>Rank:" + rank + " </b>";
             } else {
               delta = this.y - this.series.data[this.x - 1].y;
               sign = '+';
               if (delta < 0) {
                 sign = '';
               }
-              return "<span style='color:" + this.color + "'>\u25CF</span> " + this.series.name + ": <b>" + this.y + "</b><br/><b>" + sign + delta + "</b>";
+              return "<span style='color:" + this.color + "'>\u25CF</span> " + this.series.name + ": <b>" + this.y + "</b><br/><b>" + sign + delta + "</b><br/><b>Rank: " + rank + "</b>";
             }
           }
         },
