@@ -15,6 +15,10 @@ angular.module('bcpc-rating', [
 
   $scope.currentRanks = [[4,9,2,1,10,6,3,8,5,7,11],[2,4,3,1,10,5,6,7,8,11,9],[10,3,4,1,11,5,6,8,2,7,9]]
 
+  $scope.problemCount = [21,20,23,25,17,21,22,19,22,18,17]
+
+  $scope.trainingCount = [0,0,0,0,0,0,0,0,0,0,0]
+
   $scope.PS = PS
 
   $scope.PT = PT
@@ -43,10 +47,6 @@ angular.module('bcpc-rating', [
   $scope.teamList = (team for team in $scope.teamNames)
 
   $scope.result = ({name:team,rating:1000} for team in $scope.teamNames)
-
-  $scope.problemCount = [21,20,23,25,17,21,22,19,22,18,17]
-
-  $scope.trainingCount = (0 for team in $scope.teamNames)
 
   $scope.dragControlListeners=
     itemMoved: (event)->
@@ -145,8 +145,15 @@ angular.module('bcpc-rating', [
     aLink.dispatchEvent(evt)
 
   $scope.downloadRank = ()->
-    fileExport(JSON.stringify($scope.currentRanks), "rank_#{(new Date())}", "txt")
-    fileExport(JSON.stringify($scope.problemCount), "problemCount_#{(new Date())}", "txt")
+    data = "
+           $scope.currentRanks = #{JSON.stringify $scope.currentRanks}   \n
+                                                                         \n
+           $scope.problemCount = #{JSON.stringify $scope.problemCount}   \n
+                                                                         \n
+           $scope.trainingCount = #{JSON.stringify $scope.trainingCount} \n
+           "
+
+    fileExport(data, "rating_save_#{(new Date())}", "txt")
 
   $scope.color = (rank)->
     return "gold" if rank <= 2

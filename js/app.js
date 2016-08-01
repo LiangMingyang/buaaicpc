@@ -13,6 +13,8 @@
   angular.module('bcpc-rating', ['as.sortable']).controller('main', function($scope) {
     var fileExport, i, k, len, ref, series, team, teamDic, update;
     $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11], [2, 4, 3, 1, 10, 5, 6, 7, 8, 11, 9], [10, 3, 4, 1, 11, 5, 6, 8, 2, 7, 9]];
+    $scope.problemCount = [21, 20, 23, 25, 17, 21, 22, 19, 22, 18, 17];
+    $scope.trainingCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     $scope.PS = PS;
     $scope.PT = PT;
     series = [];
@@ -43,17 +45,6 @@
           name: team,
           rating: 1000
         });
-      }
-      return results;
-    })();
-    $scope.problemCount = [21, 20, 23, 25, 17, 21, 22, 19, 22, 18, 17];
-    $scope.trainingCount = (function() {
-      var l, len1, ref1, results;
-      ref1 = $scope.teamNames;
-      results = [];
-      for (l = 0, len1 = ref1.length; l < len1; l++) {
-        team = ref1[l];
-        results.push(0);
       }
       return results;
     })();
@@ -214,8 +205,9 @@
       return aLink.dispatchEvent(evt);
     };
     $scope.downloadRank = function() {
-      fileExport(JSON.stringify($scope.currentRanks), "rank_" + (new Date()), "txt");
-      return fileExport(JSON.stringify($scope.problemCount), "problemCount_" + (new Date()), "txt");
+      var data;
+      data = "$scope.currentRanks = " + (JSON.stringify($scope.currentRanks)) + "   \n \n $scope.problemCount = " + (JSON.stringify($scope.problemCount)) + "   \n \n $scope.trainingCount = " + (JSON.stringify($scope.trainingCount)) + " \n";
+      return fileExport(data, "rating_save_" + (new Date()), "txt");
     };
     $scope.color = function(rank) {
       if (rank <= 2) {
