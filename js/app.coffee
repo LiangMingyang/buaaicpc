@@ -17,7 +17,7 @@ angular.module('bcpc-rating', [
 
   $scope.problemCount = [27,24,29,31,21,27,26,23,27,22,20]
 
-  $scope.trainingCount = [12,12,12,12,12,12,12,10,12,12,9]
+  $scope.trainingCount = [12,12,12,12,11,12,12,10,12,12,9]
 
   $scope.PS = PS
 
