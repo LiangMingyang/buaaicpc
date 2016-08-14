@@ -19,6 +19,8 @@ angular.module('bcpc-rating', [
 
   $scope.trainingCount = [24,24,24,24,18,24,24,19,24,24,13]
 
+  $scope.updatedDate = new Date("Sun Aug 14 2016 18:53:08 GMT+0800 (HKT)")
+
   $scope.PS = PS
 
   $scope.PT = PT
@@ -151,6 +153,8 @@ angular.module('bcpc-rating', [
            $scope.problemCount = #{JSON.stringify $scope.problemCount}   \n
                                                                          \n
            $scope.trainingCount = #{JSON.stringify $scope.trainingCount} \n
+
+           $scope.updatedDate = new Date(\"#{new Date()}\")\n
            "
 
     fileExport(data, "rating_save_#{(new Date())}", "txt")
