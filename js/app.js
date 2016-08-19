@@ -14,8 +14,8 @@
     var fileExport, i, k, len, ref, series, team, teamDic, update;
     $scope.currentRanks = [[4, 9, 2, 1, 10, 6, 3, 8, 5, 7, 11], [2, 4, 3, 1, 10, 5, 6, 7, 8, 11, 9], [10, 3, 4, 1, 11, 5, 6, 8, 2, 7, 9], [2, 6, 3, 1, 10, 4, 7, 8, 5, 9, 11], [5, 3, 4, 8, 7, 6, 10, 9, 1, 2, 11], [2, 8, 4, 1, 11, 6, 5, 9, 3, 10, 7], [1, 3, 5, 10, 9, 7, 2, 8, 6, 4, 11], [6, 1, 3, 2, 8, 5, 11, 9, 7, 4, 10], [1, 3, 7, 4, 5, 2, 10, 8, 6, 11, 9], [2, 3, 6, 1, 9, 7, 5, 10, 8, 10, 4], [3, 1, 2, 9, 6, 10, 7, 11, 8, 5, 4]];
     $scope.problemCount = [64, 56, 60, 63, 46, 53, 52, 45, 57, 48, 44];
-    $scope.trainingCount = [24, 24, 24, 24, 18, 24, 24, 19, 24, 24, 13];
-    $scope.updatedDate = new Date("Thu Aug 18 2016 17:26:47 GMT+0800");
+    $scope.trainingCount = [37, 37, 37, 37, 24, 36, 36, 26, 37, 37, 18];
+    $scope.updatedDate = new Date("Fri Aug 19 2016 10:00:11 GMT+0800 (中国标准时间)");
     $scope.PS = PS;
     $scope.PT = PT;
     series = [];
@@ -207,7 +207,7 @@
     };
     $scope.downloadRank = function() {
       var data;
-      data = "$scope.currentRanks = " + (JSON.stringify($scope.currentRanks)) + "   \n \n $scope.problemCount = " + (JSON.stringify($scope.problemCount)) + "   \n \n $scope.trainingCount = " + (JSON.stringify($scope.trainingCount)) + " \n $scope.updatedDate = new Date(\"" + (new Date()) + "\")\n";
+      data = "$scope.currentRanks = " + (JSON.stringify($scope.currentRanks)) + "   \n \n $scope.problemCount = " + (JSON.stringify($scope.problemCount)) + "   \n \n $scope.trainingCount = " + (JSON.stringify($scope.trainingCount)) + " \n \n $scope.updatedDate = new Date(\"" + (new Date()) + "\")\n";
       return fileExport(data, "rating_save_" + (new Date()), "txt");
     };
     $scope.color = function(rank) {

@@ -17,9 +17,9 @@ angular.module('bcpc-rating', [
 
   $scope.problemCount = [64,56,60,63,46,53,52,45,57,48,44]
 
-  $scope.trainingCount = [24,24,24,24,18,24,24,19,24,24,13]
+  $scope.trainingCount = [37,37,37,37,24,36,36,26,37,37,18]
 
-  $scope.updatedDate = new Date("Thu Aug 18 2016 17:26:47 GMT+0800")
+  $scope.updatedDate = new Date("Fri Aug 19 2016 10:00:11 GMT+0800 (中国标准时间)")
 
   $scope.PS = PS
 
@@ -153,7 +153,7 @@ angular.module('bcpc-rating', [
            $scope.problemCount = #{JSON.stringify $scope.problemCount}   \n
                                                                          \n
            $scope.trainingCount = #{JSON.stringify $scope.trainingCount} \n
-
+                                                                        \n
            $scope.updatedDate = new Date(\"#{new Date()}\")\n
            "
 
