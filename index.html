@@ -17,44 +17,63 @@
     <script src="bower_components/ng-sortable/dist/ng-sortable.min.js"></script>
     <script src="js/calc-rating.js"></script>
 </head>
-<body ng-controller="main">
+<body ng-controller="main" style="background: url('集训队合影.jpg'); background-attachment: fixed; background-repeat: no-repeat; background-size: 100%; z-index: -100;">
+    <div style="margin: -50px; z-index: -99;background-color: rgba(188,188,188,0.5);">
+    <div style="padding: 50px;">
+<!--<body ng-controller="main">-->
+    <!--<div><div>-->
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-sm-12">
                 <h1 class="text-center">2016ACM暑期集训</h1>
                 <a target="_blank" href="https://sojump.com/jq/9382751.aspx" class="text-center"><h4>反馈</h4></a>
             </div>
         </div>
         <div class="row">
-            <!--<div class="col-md-2"></div>-->
-            <!--<div class="col-md-1"></div>-->
-            <div class="col-md-2">
-                <p id="contest">Contest #{{currentRanks.length+1}}</p>
+            <!--<div class="col-sm-2"></div>-->
+            <!--<div class="col-sm-1"></div>-->
+            <div class="col-sm-2">
+                <p id="contest" style="font-weight: bold; font-size: large;">Contest #{{currentRanks.length+1}}</p>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-2">
-                <p id="rating">Rating #{{currentRanks.length}}</p>
-                <p id="updated-time" class="text-info small">{{updatedDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <p id="rating" style="font-weight: bold; font-size: large;">Rating #{{currentRanks.length}}</p>
+
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-2">
-                <p id="Problems">+ Problems</p>
+            <div class="col-sm-2">
+                <p id="updated-time" class="text-info small" style="font-weight: bold; vertical-align: middle; display: table-cell; height: 21px;">{{updatedDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
             </div>
-            <div class="col-md-1">
-                <p id="PS">Contest*{{PS}}</p>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p id="Problems" style="font-weight: bold; font-size: large; word-break: keep-all; white-space: nowrap;">+ Problems</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                        <p id="PS" style="font-weight: bold; font-size: large; word-break: keep-all; white-space: nowrap;">Contest*{{PS}}</p>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                        <p id="PT" style="font-weight: bold; font-size: large; word-break: keep-all; white-space: nowrap;">Training*{{PT}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-1">
-                <p id="PT">Training*{{PT}}</p>
-            </div>
+            <!--<div class="col-sm-2">-->
+                <!--<p id="Problems" style="font-weight: bold; font-size: large;">+ Problems</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-1">-->
+                <!--<p id="PS" style="font-weight: bold; font-size: large;">Contest*{{PS}}</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-1">-->
+                <!--<p id="PT" style="font-weight: bold; font-size: large;">Training*{{PT}}</p>-->
+            <!--</div>-->
         </div>
         <div class="row">
-            <!--<div class="col-md-2"></div>-->
-            <div class="col-md-1">
+            <!--<div class="col-sm-2"></div>-->
+            <div class="col-sm-1">
                 <ul class="rank">
                     <li ng-style="{background:color($index+1)}" ng-repeat="teamName in teamNames">{{$index+1}}</li>
                 </ul>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <ul class="list" data-as-sortable data-ng-model="teamList">
                     <li ng-repeat="team in teamList" data-as-sortable-item>
                         <div data-as-sortable-item-handle>
@@ -64,23 +83,23 @@
                 </ul>
                 <button ng-click="calc();" class="btn btn-default">根据排名计算积分</button>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
                 <ul class="team">
-                    <li ng-repeat="team in result">{{team.name}}</li>
+                    <li style="background-color: #f5f5f5;" ng-repeat="team in result">{{team.name}}</li>
                 </ul>
                 <!--<button ng-click="drawChart();" class="btn btn-default">画出统计图表</button>-->
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <ul class="rating">
-                    <li ng-repeat="team in result">{{team.rating}}</li>
+                    <li style="background-color: #f5f5f5;" ng-repeat="team in result">{{team.rating}}</li>
                 </ul>
                 <button ng-click="downloadRank();" class="btn btn-default">保存</button>
             </div>
         <!--<div class="row">-->
-            <!--<div class="col-md-3"></div>-->
-            <div class="col-md-3">
-                <table class="table table-bordered">
+            <!--<div class="col-sm-3"></div>-->
+            <div class="col-sm-3">
+                <table class="table table-bordered" style="margin-top: 6px; margin-bottom: 5px;">
                     <!--<thead>-->
                         <!--<tr>-->
                         <!--<td>Team</td>-->
@@ -88,13 +107,13 @@
                         <!--</tr>-->
                     <!--</thead>-->
                     <tbody>
-                        <tr ng-repeat="team in teamNames">
+                        <tr style="background-color: #f5f5f5;" ng-repeat="team in teamNames">
                             <td class="team">{{team}}</td>
                             <td class="rating">
-                                <input type="number" ng-model="problemCount[$index]" ng-change="update();" title="">
+                                <input type="number" ng-model="problemCount[$index]" ng-change="update();" title="" style="width: 60px;">
                             </td>
                             <td class="rating">
-                                <input type="number" ng-model="trainingCount[$index]" ng-change="update();" title="">
+                                <input type="number" ng-model="trainingCount[$index]" ng-change="update();" title="" style="width: 60px;">
                             </td>
                         </tr>
                     </tbody>
@@ -103,10 +122,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <div id="panel"></div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </body>
 </html>
