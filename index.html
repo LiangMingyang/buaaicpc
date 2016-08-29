@@ -70,6 +70,7 @@
                     <li ng-repeat="team in result">{{team.name}}</li>
                 </ul>
                 <!--<button ng-click="drawChart();" class="btn btn-default">画出统计图表</button>-->
+                <input type="checkbox" ng-model="draw">画出变化图</input>
             </div>
             <div class="col-md-2">
                 <ul class="rating">
@@ -104,7 +105,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div id="panel"></div>
+                <div id="panel" ng-show="draw"></div>
             </div>
         </div>
     </div>
