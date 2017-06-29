@@ -14,13 +14,13 @@
     }
   });
 
-  To = ["450978053@qq.com", "lizhenplus@foxmail.com", "280835372@qq.com", "constroy@163.com", "keepit_lch@163.com", "superheyueaaa@163.com", "linziyi@buaa.edu.cn", "fate_wheel@126.com", "1440634039@qq.com", "1023964019@qq.com"];
+  To = ["constroy@163.com", "keepit_lch@163.com", "linziyi@buaa.edu.cn", "1023964019@qq.com", "andy_usaco@126.com", "412962834@qq.com", "350012950@qq.com", "superheyueaaa@163.com", "1808160349@qq.com", "342333349@qq.com", "450978053@qq.com", "geaed@126.com"];
 
-  Name = ["TheWaySoFar", "Damocles", "undetermined", "TDL", "LovelyDonuts", "NewBeer", "TheThreeMusketeers", "I-PPPei+", "Prometheus", "null"];
+  Name = ["TDL", "LovelyDonuts", "ACMakeMeHappier", "null", "sto orz", "QAQ", "ResuscitatedHope", "deticxe", "GG", "The South China Sea belongs to China!", "昂神", "适牛"];
 
-  Team = [];
+  Team = ["team160812@pkuicpc.cn", "team160813@pkuicpc.cn", "team160814@pkuicpc.cn", "team160815@pkuicpc.cn", "team160816@pkuicpc.cn", "team160817@pkuicpc.cn", "team160818@pkuicpc.cn", "team160819@pkuicpc.cn", "team160820@pkuicpc.cn", "team160821@pkuicpc.cn", "team160822@pkuicpc.cn", "team160823@pkuicpc.cn", "team160824@pkuicpc.cn", "team160825@pkuicpc.cn", "team161018@pkuicpc.cn"];
 
-  Pass = [];
+  Pass = ["TM6O4F0CRB", "J4HV4499XQ", "K6FIZFOU4T", "6NMJ1WO7YM", "87GF8Q98QD", "4GPPOEVIEP", "HRIT09FE7K", "QLXD7CTMQP", "PKV409P1H9", "WPQ4OGJA1G", "KX8NG5PGH5", "VDWHN2WI9K", "IVZY5TLETS", "1JVFX2AC8X", "NFOD1KN0LU"];
 
   record = 0;
 
@@ -31,8 +31,10 @@
       return smtpTransport.sendMail(mailOptions[i], function(err, res) {
         if (err) {
           console.log(err, res);
+          console.log(Name[i] + "发送失败");
         } else {
           console.log(res);
+          console.log(Name[i] + "发送成功");
         }
         return ++record;
       });
@@ -43,8 +45,8 @@
     mailOptions.push({
       from: "梁明阳<1012004860@qq.com>",
       to: Name[i] + "<" + To[i] + ">",
-      subject: "ACM-ICPC:合肥网络赛账号和密码",
-      html: "Hi，" + Name[i] + "，这是你们队的合肥网络赛的账号和密码<br><br><b>账号：" + Team[i] + "</b><br><b>密码：" + Pass[i] + "</b><br><br>合肥网络赛将于2015-09-27 12:00:00在HDU上进行。<br><br>不要作弊，会有监察的。<br>注意保管账号和密码，<b>预祝你们取得好成绩，收到请回复</b><br><br>------------------<br>发送自：梁明阳<br>手机：13146014364<br>邮箱：1012004860@qq.com<br>QQ：1012004860<br>"
+      subject: "BCPC:北京网络赛账号和密码",
+      html: "Hi，" + Name[i] + "，这是你们的北京网络赛的账号和密码<br><br><b>账号：" + Team[i] + "</b><br><b>密码：" + Pass[i] + "</b><br><br>北京网络赛将于2016-09-24 12:00:00在<a href='https://hihocoder.com/contests'>hihocoder</a>上进行。<br><br>不要作弊，会有监察的。<br>注意保管账号和密码，<b>预祝你们取得好成绩，收到请回复</b><br><br>------------------<br>发送自：梁明阳<br>手机：13146014364<br>邮箱：1012004860@qq.com<br>QQ：1012004860<br>"
     });
   }
 
@@ -54,7 +56,7 @@
 
   setInterval(function() {
     if (record >= To.length) {
-      return console.log("Done");
+      return console.log("Done! you can close me");
     } else {
       return console.log("Waiting");
     }
